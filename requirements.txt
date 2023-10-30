@@ -1,0 +1,3 @@
+google-cloud-datastore
+google-cloud-secret-manager
+tweepy
