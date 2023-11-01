@@ -12,8 +12,8 @@ ds_client = datastore.Client()
 sm_client = secretmanager.SecretManagerServiceClient()
 
 #MAX tweet id
-max_id = int(os.environ.get('max_id', 5))
-project_id = '376979220448'
+max_id = int(os.environ.get('max_id'))
+project_id = os.environ.get('project_id')
 
 def post_tweet(tweet):
     # Authenticate
