@@ -3,6 +3,10 @@ A twitter bot that runs on GCP CloudFunctions. The bot randomly chooses a tweet 
 
 The bot runs every 3 hours, but the period can be adjusted by adjusting the schedule of the `google_cloud_scheduler_job resource` in `terraform/cloudfunction.tf`.
 
+## requirements
+- a twitter account set up to use the twitter API (obtain the API keys and secrets from the twitter developer portal)
+- a GCP account
+
 ## Initial preperations
 - Fill in the csv file with tweets, and serial int IDs of tweets.
 - run `populate_datastore.py` to read tweets and ids from the csv file and populate Google cloud datastore with it.
@@ -30,7 +34,7 @@ provider "google" {
   credentials = file("./serviceaccount_key.json")
 }
 ```
-## Set up the peoject on GCP using terraform
+## Set up the project on GCP using terraform
 - initialize terraform using the backend.conf file
 ```bash
 cd terraform
@@ -47,6 +51,6 @@ terraform apply -var-file values.tfvars
 
 ## Notes
 - Twitter doesn't allow a duplicate tweet within a 12hours window
-- datastore not setup using terraform, rather data is populated in the initial setup above
+- datastore is not setup using terraform, rather data is populated in the initial setup above
 - secrets are manually saved after creating the secret resources
- - secrets are used for the twitter API tokens and keys 
+  - secrets are used for the twitter API tokens and keys
